@@ -12,7 +12,7 @@ ENV PATH="/root/.local/bin:$PATH"
 
 WORKDIR /app
 COPY pyproject.toml* uv.lock* ./
-RUN uv sync --frozen
+RUN uv sync
 
 
 FROM python:3.12-slim AS runtime
