@@ -25,19 +25,19 @@ interface PageLink {
 const pages: PageLink[] = [
   { path: '/chat/new', title: 'New Chat', Icon: NewChatIcon },
   // { path: '', title: 'Search Chats', Icon: SearchChatsIcon },
-  { path: '/agents', title: 'GenAI Agents', Icon: AgentsIcon },
-  { path: '/a2a-agents', title: 'A2A Agents', Icon: A2AAgentsIcon },
+  // { path: '/agents', title: 'GenAI Agents', Icon: AgentsIcon },
+  // { path: '/a2a-agents', title: 'A2A Agents', Icon: A2AAgentsIcon },
   { path: '/mcp-agents', title: 'MCP Servers', Icon: MCPAgentsIcon },
-  {
-    path: '/agent-flows',
-    title: 'Agent Flows',
-    Icon: FlowsIcon,
-  },
-  {
-    path: '/agent-flows/new',
-    title: 'New Agent Flow',
-    Icon: NewFlowIcon,
-  },
+  // {
+  //   path: '/agent-flows',
+  //   title: 'Agent Flows',
+  //   Icon: FlowsIcon,
+  // },
+  // {
+  //   path: '/agent-flows/new',
+  //   title: 'New Agent Flow',
+  //   Icon: NewFlowIcon,
+  // },
 ];
 
 const Sidebar: FC<SidebarProps> = memo(({ collapsed, setCollapsed }) => {
