@@ -22,6 +22,7 @@ import { MainLayout } from '@/components/layout/MainLayout';
 import { OpenAISettings } from '@/components/settings/OpenAISettings';
 import { AzureOpenAISettings } from '@/components/settings/AzureOpenAISettings';
 import { OllamaSettings } from '@/components/settings/OllamaSettings';
+import { GeminiSettings } from '@/components/settings/GeminiSettings';
 import ModelForm from '@/components/settings/ModelForm';
 import { AIModelGrid } from '@/components/settings/AIModelGrid';
 import ConfirmModal from '@/components/modals/ConfirmModal';
@@ -189,6 +190,13 @@ const SettingsPage = () => {
 
               {config.provider === AI_PROVIDERS.OLLAMA && (
                 <OllamaSettings
+                  settings={config}
+                  onSettingsChange={setConfig}
+                />
+              )}
+
+              {config.provider === AI_PROVIDERS.GOOGLE_GENAI && (
+                <GeminiSettings
                   settings={config}
                   onSettingsChange={setConfig}
                 />

@@ -39,9 +39,13 @@ const ModelForm: FC<ModelFormProps> = ({
   systemPrompt,
 }) => {
   const initialModel =
-    initialData?.model || (settings.provider === AI_PROVIDERS.OPENAI
+    initialData?.model ||
+    (settings.provider === AI_PROVIDERS.OPENAI
       ? 'gpt-4o'
-      : '');
+      : settings.provider === AI_PROVIDERS.GOOGLE_GENAI
+        ? 'gemini-2.5-flash'
+        : '');
+
 
   const [formData, setFormData] = useState({
     name: initialData?.name || '',

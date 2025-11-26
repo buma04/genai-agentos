@@ -87,6 +87,11 @@ export const getInitialMetadata = (
         base_url: '',
       };
 
+    case AI_PROVIDERS.GOOGLE_GENAI:
+      return {
+        api_key: '',
+      };
+
     default:
       return {};
   }

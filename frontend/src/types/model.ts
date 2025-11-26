@@ -56,6 +56,7 @@ export const AI_PROVIDERS = {
   OPENAI: 'openai',
   AZURE_OPENAI: 'azure openai',
   OLLAMA: 'ollama',
+  GOOGLE_GENAI: 'google genai',
 } as const;
 
 export type AIProvider = (typeof AI_PROVIDERS)[keyof typeof AI_PROVIDERS];
@@ -65,10 +66,12 @@ export const TOOLTIP_MESSAGES = {
   'azure openai':
     'Provide Azure OpenAI endpoint, API key, API version and Deployment name for adding a model',
   ollama: 'Provide Ollama Base URL for adding a model',
+  'google genai': 'Provide Google API key for adding a Gemini model',
 };
 
 export const PROVIDERS_OPTIONS = [
   { value: AI_PROVIDERS.OPENAI, label: 'OpenAI' },
   { value: AI_PROVIDERS.AZURE_OPENAI, label: 'Azure OpenAI' },
   { value: AI_PROVIDERS.OLLAMA, label: 'Ollama' },
+  { value: AI_PROVIDERS.GOOGLE_GENAI, label: 'Google Gemini' },
 ];

@@ -3,6 +3,7 @@ from typing import Any
 
 from langchain_core.language_models import BaseChatModel
 from langchain_ollama import ChatOllama
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 def attach_files_to_message(message: str, files: list[dict[str, Any]]):
@@ -12,7 +13,7 @@ def attach_files_to_message(message: str, files: list[dict[str, Any]]):
 
 
 def bind_tools_safely(model: BaseChatModel, tools: list[dict[str, Any]], **kwargs):
-    if isinstance(model, ChatOllama):
+    if isinstance(model, (ChatOllama, ChatGoogleGenerativeAI)):
         return model.bind_tools(tools, **kwargs)
     return model.bind_tools(tools, parallel_tool_calls=False, **kwargs)
 
