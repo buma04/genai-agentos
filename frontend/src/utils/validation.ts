@@ -15,51 +15,9 @@ export interface ValidationRules {
 }
 
 export const validationRules: ValidationRules = {
-  username: [
-    {
-      validate: (value: string) => value.length >= 3,
-      message: 'Username must be at least 3 characters long',
-    },
-    {
-      validate: (value: string) => !value.includes(' '),
-      message: 'Username cannot contain spaces',
-    },
-  ],
-  password: [
-    {
-      validate: (value: string) => value.length >= 8,
-      message: 'Password must be at least 8 characters long',
-    },
-    {
-      validate: (value: string) => !value.includes(' '),
-      message: 'Password cannot contain spaces',
-    },
-    {
-      validate: (value: string) => UPPERCASE_CHAR.test(value),
-      message: 'Password must contain at least one uppercase letter',
-    },
-    {
-      validate: (value: string) => LOWERCASE_CHAR.test(value),
-      message: 'Password must contain at least one lowercase letter',
-    },
-    {
-      validate: (value: string) => SPECIAL_CHAR.test(value),
-      message: 'Password must contain at least one special character',
-    },
-    {
-      validate: (value: string) => DIGIT_CHAR.test(value),
-      message: 'Password must contain at least one digit',
-    },
-  ],
-  maxLastMessages: [
-    {
-      validate: (value: string) => {
-        if (!Number(value)) return true;
-        return Number(value) >= 1 && Number(value) <= 20;
-      },
-      message: 'Value must be between 1 and 20',
-    },
-  ],
+  username: [],
+  password: [],
+  maxLastMessages: [],
 };
 
 export const validateField = (

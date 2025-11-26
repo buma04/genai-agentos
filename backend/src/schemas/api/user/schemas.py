@@ -7,7 +7,7 @@ from src.utils.constants import SPECIAL_CHARS
 class UserPassword(BaseModel):
     password: SecretStr
 
-    @field_validator("password")
+    # @field_validator("password")
     def validate_password(cls, v: SecretStr):
         if len(v) < 8:
             raise ValueError("Password must be longer than 8 symbols")
