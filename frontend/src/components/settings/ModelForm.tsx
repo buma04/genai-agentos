@@ -47,11 +47,17 @@ const ModelForm: FC<ModelFormProps> = ({
         : '');
 
 
+  // When editing: show user_prompt if exists, otherwise show system_prompt
+  // When creating: show default systemPrompt
+  const initialSystemPrompt = initialData?.user_prompt
+    ? initialData.user_prompt
+    : (initialData?.system_prompt || systemPrompt);
+
   const [formData, setFormData] = useState({
     name: initialData?.name || '',
     model: initialModel,
     provider: settings.provider,
-    system_prompt: initialData?.system_prompt || systemPrompt,
+    system_prompt: initialSystemPrompt,
     temperature: initialData?.temperature ?? 0.7,
     max_last_messages: initialData?.max_last_messages ?? 5,
   });
@@ -90,14 +96,21 @@ const ModelForm: FC<ModelFormProps> = ({
       return;
     }
 
+    const trimmedSystemPrompt = formData.system_prompt.trim();
+    // If system_prompt is different from default, save it to user_prompt
+    // system_prompt always stays as the default value
+    const user_prompt = trimmedSystemPrompt !== systemPrompt.trim()
+      ? trimmedSystemPrompt
+      : '';
+
     onSave({
       name: formData.name.trim(),
       model: formData.model.trim(),
       provider: formData.provider.trim(),
-      system_prompt: formData.system_prompt.trim(),
+      system_prompt: systemPrompt, // Always use default system prompt
+      user_prompt: user_prompt,
       temperature: formData.temperature,
       max_last_messages: Number(formData.max_last_messages),
-      user_prompt: '',
       credentials: {},
       id: initialData?.id,
     });
