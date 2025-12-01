@@ -9,7 +9,6 @@ from models.states import MasterAgentState
 from utils.agents import select_agent_and_resolve_parameters
 from utils.tracing import trace_execution_time
 
-
 class FlowMasterAgent(BaseMasterAgent):
     def __init__(
             self,
