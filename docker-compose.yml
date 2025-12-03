@@ -29,16 +29,18 @@ services:
      - local-genai-network
     restart: unless-stopped
 
-  master-agent:
-    container_name: genai-master-agent
-    build:
-      context: ./master-agent
-    env_file: .env
-    networks:
-     - local-genai-network
-    restart: unless-stopped
-    depends_on:
-      - router
+  #master-agent:
+    #container_name: genai-master-agent
+    #build:
+     # context: ./master-agent
+    #env_file: .env
+    #networks:
+    # - local-genai-network
+    #restart: unless-stopped
+    #depends_on:
+    #  - router
+    #profiles: ["manual"]
+
 
   backend:
     container_name: genai-backend
@@ -103,7 +105,7 @@ services:
 
   celery:
     container_name: genai-celery-worker
-    build: 
+    build:
       context: ./backend
     command: celery -A src.celery.celery_app worker --loglevel=debug
     networks:
@@ -113,7 +115,7 @@ services:
 
   celery-beat:
     container_name: genai-celery-beat
-    build: 
+    build:
       context: ./backend
     command: celery -A src.celery.celery_app beat --loglevel=debug
     networks:
